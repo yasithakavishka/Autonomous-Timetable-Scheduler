@@ -53,7 +53,7 @@ public class TimeTable {
 		sub_data2.put(3, s7);
 		sub_data2.put(4, s8);
 		
-		Subject s ;
+		Subject s = sub_data.get(1);
 		
 		int i,j,group1=0,group2=0,k=1;
 		
@@ -63,7 +63,7 @@ public class TimeTable {
 		
 		
 		
-		//ab[0][0] = a;
+		ab[0][0] = a;
 		
 //		Iterator itr=ab[0][0].iterator();  
 //		  //traversing elements of ArrayList object  
@@ -75,32 +75,32 @@ public class TimeTable {
 		 
 		
 		
-		for(i=0;i<5;i++) {
-			
-			for(j=0;j<8;j++) {
-				
-				s= sub_data.get(k);
-				ab[i][j].add(s);
-				k++;
-				
-				if(k==4) {
-					k=1;
-				}
-			}
-			
-		}
+		
 		
 		Iterator itr;
 		
-		for(i=0;i<8;i++) {
-		 itr=ab[0][i].iterator();  
-		  //traversing elements of ArrayList object  
-		  while(itr.hasNext()){  
-		    Subject st=(Subject)itr.next();  
-		    System.out.println(st.code+" "+st.name);  
-		  }  
-		  
+		s= sub_data.get(1);
+		
+		
+		ab[0][0].add(s);
+		s= sub_data.get(2);
+		ab[0][0].add(s);
+		
+		for(i=0;i<4;i++) {
+			
+			
 		}
+		
+		itr = ab[0][0].iterator();
+		
+		 while(itr.hasNext()){  
+			    Subject st=(Subject)itr.next();  
+			    System.out.println(st.code+" "+st.name);  
+			  }  
+		
+		
+		
+	
 		
 		
 
