@@ -1,12 +1,14 @@
 import java.util.ArrayList;
 import java.util.Hashtable;
 import java.util.Iterator;
+import java.util.Map;
 
 
 class Subject{
 	
 	int code,group;
 	String name,type;
+	
 	
 	public Subject(int code,String name,String type,int group) {
 		this.code = code;
@@ -27,82 +29,103 @@ public class TimeTable {
 	public static void main(String[] args) {
 		// TODO Auto-generated method stub
 		
-		Hashtable <Integer,Subject> sub_data = new Hashtable<Integer,Subject>();
+		
+		Map <Integer,Subject> sub_data = new Hashtable<Integer,Subject>();		// First all subjects entered for a HashTable
 		
 		Subject s1 = new Subject(200,"subject1","core",1);
 		Subject s2 = new Subject(300,"subject2","core",1);
 		Subject s3 = new Subject(400,"subject3","teq",1);
 		Subject s4 = new Subject(500,"subject4","teq",1);
 		
-		sub_data.put(1, s1);
-		sub_data.put(2, s2);
-		sub_data.put(3, s3);
-		sub_data.put(4, s4);
-		
-		
-		
-	    Hashtable <Integer,Subject> sub_data2 = new Hashtable<Integer,Subject>();
-		
 		Subject s5 = new Subject(250,"subject5","core",2);
 		Subject s6 = new Subject(350,"subject6","core",2);
 		Subject s7 = new Subject(400,"subject3","teq",2);
 		Subject s8 = new Subject(550,"subject7","teq",2);
 		
-		sub_data2.put(1, s5);
-		sub_data2.put(2, s6);
-		sub_data2.put(3, s7);
-		sub_data2.put(4, s8);
+		sub_data.put(1, s1);
+		sub_data.put(2, s2);
+		sub_data.put(3, s3);
+		sub_data.put(4, s4);
 		
+		sub_data.put(5, s5);
+		sub_data.put(6, s6);
+		sub_data.put(7, s7);
+		sub_data.put(8, s8);
+		
+		
+		
+//	    Hashtable <Integer,Subject> sub_data2 = new Hashtable<Integer,Subject>();  // Second Subject group(block)
+//		
+//		
+//		
+//		sub_data2.put(1, s5);
+//		sub_data2.put(2, s6);
+//		sub_data2.put(3, s7);
+//		sub_data2.put(4, s8);
+		
+		
+		
+	
 		Subject s = sub_data.get(1);
 		
-		int i,j,group1=0,group2=0,k=1;
-		
-		ArrayList<Subject> a = new ArrayList<Subject>();
-		
-		ArrayList ab [][] = new ArrayList[5][8];
+		int i,j,group_number=1,k=1;
 		
 		
 		
-		ab[0][0] = a;
-		
-//		Iterator itr=ab[0][0].iterator();  
-//		  //traversing elements of ArrayList object  
-//		  while(itr.hasNext()){  
-//		    Subject st=(Subject)itr.next();  
-//		    System.out.println(st.code+" "+st.name);  
-//		  }  
-		
-		 
-		
+		ArrayList ab [][] = new ArrayList[5][8];		//subject entered for 8 time slots per five days
 		
 		
 		
 		Iterator itr;
 		
-		s= sub_data.get(1);
+		//int group_check [][][] = new int [2][5][8];		
 		
+		i=-1;
+		int group_num =2;
 		
-		ab[0][0].add(s);
-		s= sub_data.get(2);
-		ab[0][0].add(s);
+		for(k=0;k<8;k++) {
+			ArrayList<Subject> a  = new ArrayList<Subject>();
+			ab[0][k]=a;	
+		}
 		
-		for(i=0;i<4;i++) {
-			
+		//subjects enter for ArrayList
+		for(Map.Entry<Integer, Subject> entry:sub_data.entrySet()){ //loop for assign values for the slot without making same group subject assign for the same slot
+				
+				int key=entry.getKey();
+				Subject ss = entry.getValue();
+				
+				if(ss.group==group_num) {
+					i++;
+				}
+				else {
+					i=0;
+					group_num--;
+				}
+				
+				ab[0][i].add(ss);
+				
 			
 		}
 		
-		itr = ab[0][0].iterator();
+		//Above for loop doesn't check for whether same subject present in different groups
 		
-		 while(itr.hasNext()){  
-			    Subject st=(Subject)itr.next();  
-			    System.out.println(st.code+" "+st.name);  
-			  }  
+		//Printing ArrayList with subjects and their time slots
+		for(j=0;j<4;j++) {
+			
+			itr = ab[0][j].iterator();
 		
+			System.out.println((j+1)+"Slot");
+			
+			while(itr.hasNext()){
+			
+				
+				Subject st = (Subject)itr.next();
+				System.out.println(st.code);
+				
+			}
 		
-		
+		}
 	
-		
-		
 
 	}
 
