@@ -73,15 +73,18 @@ public class TimeTable {
 		
 		
 		ArrayList ab [][] = new ArrayList[5][8];		//subject entered for 8 time slots per five days
-		
+		ArrayList<Subject> b  = new ArrayList<Subject>();
 		
 		
 		Iterator itr;
 		
-		//int group_check [][][] = new int [2][5][8];		
+		
 		
 		i=-1;
 		int group_num =2;
+		int check=0;
+		
+		int code_check [][]= new int [8][5]; 
 		
 		for(k=0;k<8;k++) {
 			ArrayList<Subject> a  = new ArrayList<Subject>();
@@ -89,28 +92,52 @@ public class TimeTable {
 		}
 		
 		//subjects enter for ArrayList
+		/*Below loop implement to avoid schedule subjects in same group and common subjects 
+		 * to two or more groups to different time slots*/
+		
 		for(Map.Entry<Integer, Subject> entry:sub_data.entrySet()){ //loop for assign values for the slot without making same group subject assign for the same slot
 				
 				int key=entry.getKey();
 				Subject ss = entry.getValue();
 				
+				System.out.println(ss.code);
+				
 				if(ss.group==group_num) {
-					i++;
+					
+						i++;
+						
 				}
 				else {
 					i=0;
+									
 					group_num--;
 				}
 				
+				for(int l =0;l<5;l++) {
+					
+					if(code_check[i][l]==ss.code) {
+						
+						i++;
+						
+						check=1;
+					}
+					if(code_check[i][l]==0) {
+						code_check[i][l]=ss.code;
+					}
+					
+				}
+				
+
+				
+				System.out.println(i);
 				ab[0][i].add(ss);
 				
-			
 		}
 		
-		//Above for loop doesn't check for whether same subject present in different groups
+		
 		
 		//Printing ArrayList with subjects and their time slots
-		for(j=0;j<4;j++) {
+		for(j=0;j<8;j++) {
 			
 			itr = ab[0][j].iterator();
 		
