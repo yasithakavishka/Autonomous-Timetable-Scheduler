@@ -1,4 +1,3 @@
-package TTGS.Timetable;
 
 import java.util.Vector;
 
