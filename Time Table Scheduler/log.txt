@@ -1,0 +1,13 @@
+
+Start MainAlgo >>Iteration 0
+ 8[bj,Ce,A,TUT](0:0)
+ 1[aj,Co,Co,TH](0:0)
+ 4[aj,Co,B,TUT](2:0)
+ 7[bj,Ce,CE,TH](2:0)
+ 3[aj,Co,100aA,TUT](4:0)
+ 9[bj,Ce,B,TUT](4:0)
+ 0[aj,Co,Co,TH](0:1)
+ 6[bj,Ce,CE,TH](0:1)
+ 2[aj,Co,Co,TH](0:2)
+ 5[bj,Ce,CE,TH](0:2)
+End MainAlgo >>
